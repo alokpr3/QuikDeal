@@ -9,7 +9,7 @@ namespace QD_Project1._0.Controllers
     public class AdsController : Controller
     {
         // GET: Ads
-        public ActionResult Index()
+        public ActionResult PostAd()
         {
             return View("PostAd");
         }
