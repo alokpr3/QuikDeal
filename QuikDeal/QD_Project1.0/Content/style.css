@@ -1100,7 +1100,6 @@ ul {
 	position: relative;
 	width: 100%;
 	overflow: hidden;
-    padding-top:5px;
     background: rgba(0, 0, 0, 0) url(../images/banner-7.jpg) no-repeat scroll center center / cover;
 
 }
@@ -8451,4 +8450,8 @@ ul.listingViewIcon li.shortByListingLi ul li a {
     border-top: 4px solid #b63339;
     position: realtive;
     width: 100%;
+}
+.form-group {
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
