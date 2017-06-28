@@ -100,370 +100,184 @@
         <!-- Navigation Menu -->
         <div class="clearfix"></div>
     </div>
-
-    <!-- Navigation Menu End -->
     <!-- =-=-=-=-=-=-= Transparent Header =-=-=-=-=-=-= -->
     <div class="clearfix"></div>
     <div style="min-height:500px;margin-top:35px;background-color: #f0f0f0;">
         <div class="clearfix"></div>
-            <div class="search-container">
-                <div class="container">
-                    <!-- Form -->
-                    <form>
-                        <div class="col-lg-2">
-                            <div class="">
-
-                                <a href="index.html">
-                                    <br />
-                                    <img src="../images/logo-1.png" alt="logo"
-                                         style="margin: 0;
-                                                padding: 0;
-                                                display: block;
-                                                max-width: 100% !important;
-                                                float: left;">
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-10">
-                            <!-- Search Input -->
-                            <div class="col-md-4 col-sm-6 col-xs-12 no-padding">
-                                <div class="form-group">
-                                    <input type="text" class="form-control banner-icon-search" name="keyword" placeholder="What are you looking for ?" value="">
-                                </div>
-                            </div>
-                            <!-- Search Category -->
-                            <div class="col-md-3 col-sm-6 col-xs-12 no-padding">
-                                <div class="form-group">
-                                    <select class="category form-control">
-                                        <option label="Select Option"></option>
-                                        <option value="0">Cars & Bikes</option>
-                                        <option value="1">Mobile Phones</option>
-                                        <option value="2">Home Appliances</option>
-                                        <option value="3">Clothing</option>
-                                        <option value="4">Human Resource</option>
-                                        <option value="5">Information Technology</option>
-                                        <option value="6">Marketing</option>
-                                        <option value="7">Others</option>
-                                        <option value="8">Sales</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- Search Location -->
-                            <div class="col-md-3 col-sm-9 col-xs-12 no-padding">
-                                <div class="form-group">
-                                    <select class="cities form-control">
-                                        <option value="0">SriLanka</option>
-                                        <option value="1">Australia</option>
-                                        <option value="2">Bahrain</option>
-                                        <option value="3">Canada</option>
-                                        <option value="4">Denmark</option>
-                                        <option value="5">Germany</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-sm-3 col-xs-12 no-padding">
-                                <div class="form-group form-action">
-                                    <button type="button" class="btn btn-theme btn-search-submit">Search</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-        </div>
-    @RenderBody()
+        @{Html.RenderPartial("_SearchBar");}
+        @RenderBody()
     </div>
-
-
-    <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-    <footer class="footer-area no-bg">
-        <!--Footer Upper-->
-        <div class="footer-content">
-            <div class="container">
-                <div class="row clearfix">
-                    <!--Two 4th column-->
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div class="row clearfix">
-                            <div class="col-lg-7 col-sm-6 col-xs-12 column">
-                                <div class="footer-widget about-widget">
-                                    <div class="logo">
-                                        <a href="index.html"><img alt="" class="img-responsive" src="../images/logo.png"></a>
-                                    </div>
-                                    <div class="text">
-                                        <p>Lorem ipsum dolor sit amet, eu me.</p>
-                                    </div>
-                                    <ul class="contact-info">
-                                        <li><span class="icon fa fa-map-marker"></span> 60 Link Road Lhr. Pakistan 54770</li>
-                                        <li><span class="icon fa fa-phone"></span> (042) 1234567890</li>
-                                        <li><span class="icon fa fa-envelope-o"></span> contant@scriptsbundle.com</li>
-                                        <li><span class="icon fa fa-fax"></span> (042) 1234 7777</li>
+    @{Html.RenderPartial("_FooterBar");}
+        <!-- Post Ad Sticky -->
+        <a href="#" class="sticky-post-button">
+            <span class="sell-icons">
+                <i class="flaticon-transport-9"></i>
+            </span>
+            <h4>SELL</h4>
+        </a>
+        <!-- Back To Top -->
+        <a href="#0" class="cd-top">Top</a>
+        <!-- =-=-=-=-=-=-= Quote Modal =-=-=-=-=-=-= -->
+        <div class="modal fade price-quote" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="lineModalLabel">Email for Price</h3>
+                    </div>
+                    <div class="modal-body">
+                        <!-- content goes here -->
+                        <form>
+                            <div class="form-group  col-md-6">
+                                <label>Your Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Your Name">
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" placeholder="Enter email">
+                            </div>
+                            <div class="form-group  col-md-12">
+                                <label>Contact No</label>
+                                <input type="text" class="form-control" placeholder="Contact No">
+                            </div>
+                            <div class="form-group  col-md-12">
+                                <label>Comments</label>
+                                <textarea placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control">What is the price of the 2015 Honda Accord EX-L you have in your inventory?</textarea>
+                            </div>
+                            <div class="col-md-12"> <img src="../images/captcha.gif" alt="" class="img-responsive"> </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-12 margin-bottom-20 margin-top-20">
+                                <button type="submit" class="btn btn-theme btn-block">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product Preview Popup -->
+        <div class="quick-view-modal modalopen" id="ad-preview" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg ad-modal">
+                <button class="close close-btn popup-cls" aria-label="Close" data-dismiss="modal" type="button"> <i class="fa-times fa"></i> </button>
+                <div class="modal-content single-product">
+                    <div class="diblock">
+                        <div class="col-lg-7 col-sm-12 col-xs-12">
+                            <div class="clearfix"></div>
+                            <div class="flexslider single-page-slider">
+                                <div class="flex-viewport">
+                                    <ul class="slides slide-main">
+                                        <li class=""><img alt="" src="../images/single-page/1.jpg" title=""></li>
+                                        <li><img alt="" src="../images/single-page/2.jpg" title=""></li>
+                                        <li class="flex-active-slide"><img alt="" src="../images/single-page/3.jpg" title=""></li>
+                                        <li><img alt="" src="../images/single-page/4.jpg" title=""></li>
+                                        <li><img alt="" src="../images/single-page/5.jpg" title=""></li>
+                                        <li><img alt="" src="../images/single-page/6.jpg" title=""></li>
                                     </ul>
-                                    <div class="social-links-two clearfix">
-                                        <a class="facebook img-circle" href="#"><span class="fa fa-facebook-f"></span></a>
-                                        <a class="twitter img-circle" href="#"><span class="fa fa-twitter"></span></a>
-                                        <a class="google-plus img-circle" href="#"><span class="fa fa-google-plus"></span></a>
-                                        <a class="linkedin img-circle" href="#"><span class="fa fa-pinterest-p"></span></a>
-                                        <a class="linkedin img-circle" href="#"><span class="fa fa-linkedin"></span></a>
-                                    </div>
                                 </div>
                             </div>
-                            <!--Footer Column-->
-                            <div class="col-lg-5 col-sm-6 col-xs-12 column">
-                                <div class="heading-panel">
-                                    <h3 class="main-title text-left">Our Services</h3>
-                                </div>
-                                <div class="footer-widget links-widget">
-                                    <ul>
-                                        <li><a href="#">Web Development</a></li>
-                                        <li><a href="#">Web Designing</a></li>
-                                        <li><a href="#">Android Development</a></li>
-                                        <li><a href="#">Theme Development</a></li>
-                                        <li><a href="#">IOS Development</a></li>
+                            <div class="flexslider" id="carousels">
+                                <div class="flex-viewport">
+                                    <ul class="slides slide-thumbnail">
+                                        <li><img alt="" draggable="false" src="../images/single-page/1_thumb.jpg"></li>
+                                        <li><img alt="" draggable="false" src="../images/single-page/2_thumb.jpg"></li>
+                                        <li class="flex-active-slide"><img alt="" draggable="false" src="../images/single-page/3_thumb.jpg"> </li>
+                                        <li><img alt="" draggable="false" src="../images/single-page/4_thumb.jpg"></li>
+                                        <li><img alt="" draggable="false" src="../images/single-page/5_thumb.jpg"></li>
+                                        <li><img alt="" draggable="false" src="../images/single-page/6_thumb.jpg"></li>
+                                        <!-- items mirrored twice, total of 12 -->
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--Two 4th column End-->
-                    <!--Two 4th column-->
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div class="row clearfix">
-                            <!--Footer Column-->
-                            <div class="col-lg-7 col-sm-6 col-xs-12 column">
-                                <div class="footer-widget news-widget">
-                                    <div class="heading-panel">
-                                        <h3 class="main-title text-left"> Latest News</h3>
+                        <div class=" col-sm-12 col-lg-5 col-xs-12">
+                            <div class="summary entry-summary">
+                                <div class="ad-preview-details">
+                                    <a href="#">
+                                        <h4>Honda Civic Sports Edition 2017</h4>
+                                    </a>
+                                    <div class="overview-price">
+                                        <span>$36.000</span>
                                     </div>
-                                    <!--News Post-->
-                                    <div class="news-post">
-                                        <div class="icon"></div>
-                                        <div class="news-content">
-                                            <figure class="image-thumb"><img alt="" src="../images/blog/popular-2.jpg"></figure>
-                                            <a href="#">If you need a crown or lorem an implant you will pay it gap it</a>
-                                        </div>
-                                        <div class="time">July 2, 2014</div>
-                                    </div>
-                                    <!--News Post-->
-                                    <div class="news-post">
-                                        <div class="icon"></div>
-                                        <div class="news-content">
-                                            <figure class="image-thumb"><img alt="" src="../images/blog/popular-1.jpg"></figure>
-                                            <a href="#">If you need a crown or lorem an implant you will pay it gap it</a>
-                                        </div>
-                                        <div class="time">July 2, 2014</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Footer Column-->
-                            <div class="col-lg-5 col-sm-6 col-xs-12 column">
-                                <div class="footer-widget links-widget">
-                                    <div class="heading-panel">
-                                        <h3 class="main-title text-left"> Quick Links</h3>
-                                    </div>
-                                    <ul>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="#">Our Team</a></li>
-                                        <li><a href="#">Our Services</a></li>
-                                        <li><a href="index-7.html">One Page</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                    <div class="clearfix"></div>
+                                    <p>Tattooed fashion axe Blue Bottle butcher tilde. Pitchfork leggings meh Odd Future.Drinking vinegar. </p>
+                                    <ul class="car-info col-md-6 col-sm-6">
+                                        <li>
+                                            <span>Fabrication:</span>
+                                            <p>2013/2014</p>
+                                        </li>
+                                        <li>
+                                            <span>Speed:</span>
+                                            <p>160p/h</p>
+                                        </li>
+                                        <li>
+                                            <span>Mileage:</span>
+                                            <p>30.000km - 40.000km</p>
+                                        </li>
+                                        <li>
+                                            <span>Fuel:</span>
+                                            <p>Petrol</p>
+                                        </li>
                                     </ul>
+                                    <ul class="ad-preview-info col-md-6 col-sm-6">
+                                        <li>
+                                            <span>Color:</span>
+                                            <p>Black</p>
+                                        </li>
+                                        <li>
+                                            <span>Transmition:</span>
+                                            <p>Automatic</p>
+                                        </li>
+                                        <li>
+                                            <span>Dors:</span>
+                                            <p>4/5</p>
+                                        </li>
+                                        <li>
+                                            <span>Engine:</span>
+                                            <p>2500cm3</p>
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-theme btn-block" type="submit">Contact Dealer</button>
                                 </div>
                             </div>
+                            <!-- .summary -->
                         </div>
                     </div>
-                    <!--Two 4th column End-->
                 </div>
             </div>
         </div>
-        <!--Footer Bottom-->
-        <div class="footer-copyright">
-            <div class="container clearfix">
-                <!--Copyright-->
-                <div class="copyright text-center">Copyright 2017 © Theme Created By <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> All Rights Reserved</div>
-            </div>
-        </div>
-    </footer>
-    <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
-
-
-    
- 
-    <!-- Post Ad Sticky -->
-    <a href="#" class="sticky-post-button">
-        <span class="sell-icons">
-            <i class="flaticon-transport-9"></i>
-        </span>
-        <h4>SELL</h4>
-    </a>
-    <!-- Back To Top -->
-    <a href="#0" class="cd-top">Top</a>
-    <!-- =-=-=-=-=-=-= Quote Modal =-=-=-=-=-=-= -->
-    <div class="modal fade price-quote" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h3 class="modal-title" id="lineModalLabel">Email for Price</h3>
-                </div>
-                <div class="modal-body">
-                    <!-- content goes here -->
-                    <form>
-                        <div class="form-group  col-md-6">
-                            <label>Your Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Your Name">
-                        </div>
-                        <div class="form-group  col-md-6">
-                            <label>Email Address</label>
-                            <input type="email" class="form-control" placeholder="Enter email">
-                        </div>
-                        <div class="form-group  col-md-12">
-                            <label>Contact No</label>
-                            <input type="text" class="form-control" placeholder="Contact No">
-                        </div>
-                        <div class="form-group  col-md-12">
-                            <label>Comments</label>
-                            <textarea placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control">What is the price of the 2015 Honda Accord EX-L you have in your inventory?</textarea>
-                        </div>
-                        <div class="col-md-12"> <img src="../images/captcha.gif" alt="" class="img-responsive"> </div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-12 margin-bottom-20 margin-top-20">
-                            <button type="submit" class="btn btn-theme btn-block">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Product Preview Popup -->
-    <div class="quick-view-modal modalopen" id="ad-preview" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg ad-modal">
-            <button class="close close-btn popup-cls" aria-label="Close" data-dismiss="modal" type="button"> <i class="fa-times fa"></i> </button>
-            <div class="modal-content single-product">
-                <div class="diblock">
-                    <div class="col-lg-7 col-sm-12 col-xs-12">
-                        <div class="clearfix"></div>
-                        <div class="flexslider single-page-slider">
-                            <div class="flex-viewport">
-                                <ul class="slides slide-main">
-                                    <li class=""><img alt="" src="../images/single-page/1.jpg" title=""></li>
-                                    <li><img alt="" src="../images/single-page/2.jpg" title=""></li>
-                                    <li class="flex-active-slide"><img alt="" src="../images/single-page/3.jpg" title=""></li>
-                                    <li><img alt="" src="../images/single-page/4.jpg" title=""></li>
-                                    <li><img alt="" src="../images/single-page/5.jpg" title=""></li>
-                                    <li><img alt="" src="../images/single-page/6.jpg" title=""></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="flexslider" id="carousels">
-                            <div class="flex-viewport">
-                                <ul class="slides slide-thumbnail">
-                                    <li><img alt="" draggable="false" src="../images/single-page/1_thumb.jpg"></li>
-                                    <li><img alt="" draggable="false" src="../images/single-page/2_thumb.jpg"></li>
-                                    <li class="flex-active-slide"><img alt="" draggable="false" src="../images/single-page/3_thumb.jpg"> </li>
-                                    <li><img alt="" draggable="false" src="../images/single-page/4_thumb.jpg"></li>
-                                    <li><img alt="" draggable="false" src="../images/single-page/5_thumb.jpg"></li>
-                                    <li><img alt="" draggable="false" src="../images/single-page/6_thumb.jpg"></li>
-                                    <!-- items mirrored twice, total of 12 -->
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" col-sm-12 col-lg-5 col-xs-12">
-                        <div class="summary entry-summary">
-                            <div class="ad-preview-details">
-                                <a href="#">
-                                    <h4>Honda Civic Sports Edition 2017</h4>
-                                </a>
-                                <div class="overview-price">
-                                    <span>$36.000</span>
-                                </div>
-                                <div class="clearfix"></div>
-                                <p>Tattooed fashion axe Blue Bottle butcher tilde. Pitchfork leggings meh Odd Future.Drinking vinegar. </p>
-                                <ul class="car-info col-md-6 col-sm-6">
-                                    <li>
-                                        <span>Fabrication:</span>
-                                        <p>2013/2014</p>
-                                    </li>
-                                    <li>
-                                        <span>Speed:</span>
-                                        <p>160p/h</p>
-                                    </li>
-                                    <li>
-                                        <span>Mileage:</span>
-                                        <p>30.000km - 40.000km</p>
-                                    </li>
-                                    <li>
-                                        <span>Fuel:</span>
-                                        <p>Petrol</p>
-                                    </li>
-                                </ul>
-                                <ul class="ad-preview-info col-md-6 col-sm-6">
-                                    <li>
-                                        <span>Color:</span>
-                                        <p>Black</p>
-                                    </li>
-                                    <li>
-                                        <span>Transmition:</span>
-                                        <p>Automatic</p>
-                                    </li>
-                                    <li>
-                                        <span>Dors:</span>
-                                        <p>4/5</p>
-                                    </li>
-                                    <li>
-                                        <span>Engine:</span>
-                                        <p>2500cm3</p>
-                                    </li>
-                                </ul>
-                                <button class="btn btn-theme btn-block" type="submit">Contact Dealer</button>
-                            </div>
-                        </div>
-                        <!-- .summary -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- / Product Preview Popup -->
-    <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
-    <script src="~/Scripts/jquery.min.js"></script>
-    <!-- Bootstrap Core Css  -->
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <!-- Jquery Easing -->
-    <script src="~/Scripts/easing.js"></script>
-    <!-- Menu Hover  -->
-    <script src="~/Scripts/forest-megamenu.js"></script>
-    <!-- Jquery Appear Plugin -->
-    <script src="~/Scripts/jquery.appear.min.js"></script>
-    <!-- Numbers Animation   -->
-    <script src="~/Scripts/jquery.countTo.js"></script>
-    <!-- Jquery Smooth Scroll  -->
-    <script src="~/Scripts/jquery.smoothscroll.js"></script>
-    <!-- Jquery Select Options  -->
-    <script src="~/Scripts/select2.min.js"></script>
-    <!-- noUiSlider -->
-    <script src="~/Scripts/nouislider.all.min.js"></script>
-    <!-- Carousel Slider  -->
-    <script src="~/Scripts/carousel.min.js"></script>
-    <script src="~/Scripts/slide.js"></script>
-    <!-- Image Loaded  -->
-    <script src="~/Scripts/imagesloaded.js"></script>
-    <script src="~/Scripts/isotope.min.js"></script>
-    <!-- CheckBoxes  -->
-    <script src="~/Scripts/icheck.min.js"></script>
-    <!-- Jquery Migration  -->
-    <script src="~/Scripts/jquery-migrate.min.js"></script>
-    <!-- Sticky Bar  -->
-    <script src="~/Scripts/theia-sticky-sidebar.js"></script>
-    <!-- Style Switcher -->
-    <script src="~/Scripts/color-switcher.js"></script>
-    <!-- Template Core JS -->
-    <script src="~/Scripts/custom.js"></script>
-
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)*@
-       
+        <!-- / Product Preview Popup -->
+        <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
+        <script src="~/Scripts/jquery.min.js"></script>
+        <!-- Bootstrap Core Css  -->
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <!-- Jquery Easing -->
+        <script src="~/Scripts/easing.js"></script>
+        <!-- Menu Hover  -->
+        <script src="~/Scripts/forest-megamenu.js"></script>
+        <!-- Jquery Appear Plugin -->
+        <script src="~/Scripts/jquery.appear.min.js"></script>
+        <!-- Numbers Animation   -->
+        <script src="~/Scripts/jquery.countTo.js"></script>
+        <!-- Jquery Smooth Scroll  -->
+        <script src="~/Scripts/jquery.smoothscroll.js"></script>
+        <!-- Jquery Select Options  -->
+        <script src="~/Scripts/select2.min.js"></script>
+        <!-- noUiSlider -->
+        <script src="~/Scripts/nouislider.all.min.js"></script>
+        <!-- Carousel Slider  -->
+        <script src="~/Scripts/carousel.min.js"></script>
+        <script src="~/Scripts/slide.js"></script>
+        <!-- Image Loaded  -->
+        <script src="~/Scripts/imagesloaded.js"></script>
+        <script src="~/Scripts/isotope.min.js"></script>
+        <!-- CheckBoxes  -->
+        <script src="~/Scripts/icheck.min.js"></script>
+        <!-- Jquery Migration  -->
+        <script src="~/Scripts/jquery-migrate.min.js"></script>
+        <!-- Sticky Bar  -->
+        <script src="~/Scripts/theia-sticky-sidebar.js"></script>
+        <!-- Style Switcher -->
+        <script src="~/Scripts/color-switcher.js"></script>
+        <!-- Template Core JS -->
+        <script src="~/Scripts/custom.js"></script>
 </body>
 </html>

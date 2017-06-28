@@ -428,6 +428,8 @@
     <Content Include="Views\Ads\PostAd.cshtml" />
     <Content Include="Views\User\SignUp.cshtml" />
     <Content Include="Views\User\SignIn.cshtml" />
+    <Content Include="Views\Shared\_SearchBar.cshtml" />
+    <Content Include="Views\Shared\_FooterBar.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
