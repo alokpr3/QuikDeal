@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QuickDealDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ad_master">
+          <Key>
+            <PropertyRef Name="Tid" />
+          </Key>
+          <Property Name="Tid" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="1500" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Photos" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Tag" Type="nvarchar(max)" />
+          <Property Name="AdType" Type="nvarchar(max)" />
+          <Property Name="Sub_Category" Type="nvarchar(max)" />
+          <Property Name="Ad_Condition" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="City_master">
+          <Key>
+            <PropertyRef Name="Tid" />
+          </Key>
+          <Property Name="Tid" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_Name" Type="nvarchar(max)" />
+          <Property Name="Province" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="iaActive" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Province_Master">
+          <Key>
+            <PropertyRef Name="Tid" />
+          </Key>
+          <Property Name="Tid" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Province_Name" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="isActive" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="User_Master">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="skey" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Contact" Type="nvarchar(max)" />
+          <Property Name="Province" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="City" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="IsActive" Type="nvarchar" MaxLength="4" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="Postal_Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__User_Mast__Provi__4E88ABD4">
+          <End Role="Province_Master" Type="Self.Province_Master" Multiplicity="0..1" />
+          <End Role="User_Master" Type="Self.User_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province_Master">
+              <PropertyRef Name="Tid" />
+            </Principal>
+            <Dependent Role="User_Master">
+              <PropertyRef Name="Province" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User_Maste__City__4D94879B">
+          <End Role="City_master" Type="Self.City_master" Multiplicity="0..1" />
+          <End Role="User_Master" Type="Self.User_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City_master">
+              <PropertyRef Name="Tid" />
+            </Principal>
+            <Dependent Role="User_Master">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Master_User_Master">
+          <End Role="User_Master" Type="Self.User_Master" Multiplicity="1" />
+          <End Role="User_Master1" Type="Self.User_Master" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User_Master">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="User_Master1">
+              <PropertyRef Name="Uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="skey" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Contact" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Province" Type="decimal" Mode="In" />
+          <Parameter Name="City" Type="decimal" Mode="In" />
+          <Parameter Name="Postal_Code" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SelectCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectProvince" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="QuickDealDBModelStoreContainer">
+          <EntitySet Name="Ad_master" EntityType="Self.Ad_master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City_master" EntityType="Self.City_master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province_Master" EntityType="Self.Province_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Master" EntityType="Self.User_Master" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__User_Mast__Provi__4E88ABD4" Association="Self.FK__User_Mast__Provi__4E88ABD4">
+            <End Role="Province_Master" EntitySet="Province_Master" />
+            <End Role="User_Master" EntitySet="User_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User_Maste__City__4D94879B" Association="Self.FK__User_Maste__City__4D94879B">
+            <End Role="City_master" EntitySet="City_master" />
+            <End Role="User_Master" EntitySet="User_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Master_User_Master" Association="Self.FK_User_Master_User_Master">
+            <End Role="User_Master" EntitySet="User_Master" />
+            <End Role="User_Master1" EntitySet="User_Master" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuickDealDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ad_master">
+          <Key>
+            <PropertyRef Name="Tid" />
+          </Key>
+          <Property Name="Tid" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Photos" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Tag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub_Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ad_Condition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="City_master">
+          <Key>
+            <PropertyRef Name="Tid" />
+          </Key>
+          <Property Name="Tid" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="City_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="iaActive" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_Master" Relationship="Self.FK__User_Maste__City__44FF419A" FromRole="City_master" ToRole="User_Master" />
+        </EntityType>
+        <EntityType Name="Province_Master">
+          <Key>
+            <PropertyRef Name="Tid" />
+          </Key>
+          <Property Name="Tid" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Province_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User_Master" Relationship="Self.FK__User_Mast__Provi__440B1D61" FromRole="Province_Master" ToRole="User_Master" />
+        </EntityType>
+        <EntityType Name="User_Master">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="skey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="City" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IsActive" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="City_master" Relationship="Self.FK__User_Maste__City__44FF419A" FromRole="User_Master" ToRole="City_master" />
+          <NavigationProperty Name="Province_Master" Relationship="Self.FK__User_Mast__Provi__440B1D61" FromRole="User_Master" ToRole="Province_Master" />
+          <NavigationProperty Name="User_Master1" Relationship="Self.FK_User_Master_User_Master" FromRole="User_Master" ToRole="User_Master1" />
+          <NavigationProperty Name="User_Master2" Relationship="Self.FK_User_Master_User_Master" FromRole="User_Master1" ToRole="User_Master" />
+          <Property Name="Postal_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__User_Maste__City__44FF419A">
+          <End Role="City_master" Type="Self.City_master" Multiplicity="0..1" />
+          <End Role="User_Master" Type="Self.User_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City_master">
+              <PropertyRef Name="Tid" />
+            </Principal>
+            <Dependent Role="User_Master">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User_Mast__Provi__440B1D61">
+          <End Role="Province_Master" Type="Self.Province_Master" Multiplicity="0..1" />
+          <End Role="User_Master" Type="Self.User_Master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province_Master">
+              <PropertyRef Name="Tid" />
+            </Principal>
+            <Dependent Role="User_Master">
+              <PropertyRef Name="Province" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Master_User_Master">
+          <End Role="User_Master" Type="Self.User_Master" Multiplicity="1" />
+          <End Role="User_Master1" Type="Self.User_Master" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User_Master">
+              <PropertyRef Name="Uid" />
+            </Principal>
+            <Dependent Role="User_Master1">
+              <PropertyRef Name="Uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuickDealDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ad_master" EntityType="Self.Ad_master" />
+          <EntitySet Name="City_master" EntityType="Self.City_master" />
+          <EntitySet Name="Province_Master" EntityType="Self.Province_Master" />
+          <EntitySet Name="User_Master" EntityType="Self.User_Master" />
+          <AssociationSet Name="FK__User_Maste__City__44FF419A" Association="Self.FK__User_Maste__City__44FF419A">
+            <End Role="City_master" EntitySet="City_master" />
+            <End Role="User_Master" EntitySet="User_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User_Mast__Provi__440B1D61" Association="Self.FK__User_Mast__Provi__440B1D61">
+            <End Role="Province_Master" EntitySet="Province_Master" />
+            <End Role="User_Master" EntitySet="User_Master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Master_User_Master" Association="Self.FK_User_Master_User_Master">
+            <End Role="User_Master" EntitySet="User_Master" />
+            <End Role="User_Master1" EntitySet="User_Master" />
+          </AssociationSet>
+          <FunctionImport Name="InsertUser">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="skey" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Contact" Mode="In" Type="String" />
+            <Parameter Name="Province" Mode="In" Type="Decimal" />
+            <Parameter Name="City" Mode="In" Type="Decimal" />
+            <Parameter Name="Postal_Code" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectProvince" ReturnType="Collection(QuickDealDBModel.SelectProvince_Result)" />
+          <FunctionImport Name="SelectCity" ReturnType="Collection(QuickDealDBModel.SelectCity_Result)" />
+        </EntityContainer>
+        <ComplexType Name="SelectProvince_Result">
+          <Property Type="Decimal" Name="tid" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="Province_Name" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SelectCity_Result">
+          <Property Type="Decimal" Name="tid" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="City_Name" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuickDealDBModelStoreContainer" CdmEntityContainer="QuickDealDBEntities1">
+          <EntitySetMapping Name="Ad_master">
+            <EntityTypeMapping TypeName="QuickDealDBModel.Ad_master">
+              <MappingFragment StoreEntitySet="Ad_master">
+                <ScalarProperty Name="Tid" ColumnName="Tid" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Photos" ColumnName="Photos" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="AdType" ColumnName="AdType" />
+                <ScalarProperty Name="Sub_Category" ColumnName="Sub_Category" />
+                <ScalarProperty Name="Ad_Condition" ColumnName="Ad_Condition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City_master">
+            <EntityTypeMapping TypeName="QuickDealDBModel.City_master">
+              <MappingFragment StoreEntitySet="City_master">
+                <ScalarProperty Name="Tid" ColumnName="Tid" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="iaActive" ColumnName="iaActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Province_Master">
+            <EntityTypeMapping TypeName="QuickDealDBModel.Province_Master">
+              <MappingFragment StoreEntitySet="Province_Master">
+                <ScalarProperty Name="Tid" ColumnName="Tid" />
+                <ScalarProperty Name="Province_Name" ColumnName="Province_Name" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Master">
+            <EntityTypeMapping TypeName="QuickDealDBModel.User_Master">
+              <MappingFragment StoreEntitySet="User_Master">
+                <ScalarProperty Name="Postal_Code" ColumnName="Postal_Code" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="skey" ColumnName="skey" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InsertUser" FunctionName="QuickDealDBModel.Store.InsertUser" />
+          <FunctionImportMapping FunctionImportName="SelectProvince" FunctionName="QuickDealDBModel.Store.SelectProvince">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuickDealDBModel.SelectProvince_Result">
+                <ScalarProperty Name="tid" ColumnName="tid" />
+                <ScalarProperty Name="Province_Name" ColumnName="Province_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectCity" FunctionName="QuickDealDBModel.Store.SelectCity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuickDealDBModel.SelectCity_Result">
+                <ScalarProperty Name="tid" ColumnName="tid" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
